@@ -3,13 +3,6 @@ package se.lexicon.erik.jpa_workshop.entity;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-/*
- * 5.	Create OrderItem class in entity with the following fields:
-		a.	Id, quantity, product, productOrder (Need to create a new class in same package called ProductOrder)
-		b.	Add a method that calculate the price with help from product and quantity.
-		c.	Test and commit
-
- */
 
 public class OrderItem {
 	
