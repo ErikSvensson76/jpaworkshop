@@ -29,7 +29,8 @@ public class ProductOrder {
 	@OneToMany(
 			fetch = FetchType.EAGER,
 			cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
-			mappedBy = "order"
+			mappedBy = "order",
+			orphanRemoval = true
 	)
 	private List<OrderItem> orderContent;
 	
