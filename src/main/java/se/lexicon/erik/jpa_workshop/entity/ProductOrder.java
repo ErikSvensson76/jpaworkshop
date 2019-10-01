@@ -7,13 +7,34 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+@Entity
 public class ProductOrder {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int orderId;
 	private LocalDate orderDate;
 	private LocalTime orderTime;
+	
+	@OneToMany(
+			fetch = FetchType.EAGER,
+			cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+			mappedBy = "order"
+	)
 	private List<OrderItem> orderContent;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@JoinColumn(name = "user_id")
 	private AppUser customer;
 	
 	public ProductOrder(int orderId, LocalDateTime timeStamp, List<OrderItem> orderContent, AppUser customer) {
