@@ -20,6 +20,9 @@ public class OrderItem implements Comparable<OrderItem>{
 
 	public OrderItem(int quantity, Product product) {
 		this(0, quantity, product, null);		
+	}	
+
+	public OrderItem() {
 	}
 
 	public int getQuantity() {

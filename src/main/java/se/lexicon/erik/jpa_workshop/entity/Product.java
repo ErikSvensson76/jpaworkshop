@@ -13,6 +13,9 @@ public class Product {
 		this.productId = productId;
 		setProductName(productName);
 		setPrice(price);
+	}	
+
+	public Product() {
 	}
 
 	public Product(String productName, BigDecimal price) {

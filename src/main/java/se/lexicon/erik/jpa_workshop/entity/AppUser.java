@@ -18,6 +18,9 @@ public class AppUser {
 
 	public AppUser(String firstName, String lastName, String email) {
 		this(0, firstName, lastName, email);
+	}	
+
+	public AppUser() {
 	}
 
 	public String getFirstName() {
