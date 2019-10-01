@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 
-public class OrderItem {
+public class OrderItem implements Comparable<OrderItem>{
 	
 	private int itemId;
 	private int quantity;
@@ -54,7 +54,7 @@ public class OrderItem {
 		return product.getPrice()
 				.multiply(BigDecimal.valueOf(quantity))
 				.setScale(2);
-	}
+	}	
 
 	@Override
 	public int hashCode() {
@@ -84,5 +84,10 @@ public class OrderItem {
 		builder.append(product);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	@Override
+	public int compareTo(OrderItem o) {
+		return this.quantity - o.getQuantity();
 	}
 }
