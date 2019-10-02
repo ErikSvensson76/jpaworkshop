@@ -1,5 +1,7 @@
 package se.lexicon.erik.jpa_workshop.entity;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -95,7 +97,13 @@ public class ProductOrder {
 		return orderId;
 	}
 	
-	
+	public BigDecimal getProductOrderPriceTotal() {
+		BigDecimal priceTotal = BigDecimal.ZERO;
+		for(OrderItem item : orderContent) {
+			priceTotal = priceTotal.add(item.getItemPrice());
+		}
+		return priceTotal.setScale(2, RoundingMode.HALF_EVEN);
+	}
 	
 	public void addOrderItem(OrderItem item) {
 		if(orderContent == null) orderContent = new ArrayList<>();

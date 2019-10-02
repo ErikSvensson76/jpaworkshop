@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -52,6 +53,13 @@ public class ProductOrderTest {
 				&&
 				(testObject.getOrderContent().contains(item2) && item2.getOrder().equals(testObject))
 			);
+	}
+	
+	@Test
+	public void testObject_getProductOrderPriceTotal_returns_500_00() {
+		BigDecimal expectedTotal = BigDecimal.valueOf(500.00).setScale(2, RoundingMode.HALF_EVEN);
+		
+		assertEquals(expectedTotal, testObject.getProductOrderPriceTotal());
 	}
 	
 	@Test
